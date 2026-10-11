@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} - تنظیمات{% endblock %}
+{% block content %}
+  <div class="meta">تغییرات بعد از تایید، فوری و بدون نیاز به ری‌استارت اعمال می‌شوند.</div>
+
+  <div class="grid">
+    <div class="card wide">
+      <h2>پاداش‌ها (config/rewards.csv)</h2>
+      <div style="overflow-x:auto">
+        <table class="settings-table" id="rewards-table">
+          <thead>
+            <tr>
+              <th>شناسه (id)</th><th>نام</th><th>شرکت</th><th>سطح</th>
+              <th>از تاریخ</th><th>تا تاریخ</th><th>فعال</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="rewards-tbody"></tbody>
+        </table>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="add-row-btn">+ افزودن ردیف</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>نسخه‌ی سندر (config/sender_version.txt)</h2>
+      <div class="radio-group">
+        <label><input type="radio" name="sender_version" value="1"> نسخه ۱ (Playwright)</label>
+        <label><input type="radio" name="sender_version" value="2"> نسخه ۲ (WebSocket)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn primary" id="save-btn">ذخیره</button>
+  </div>
+  <div id="banner"></div>
+
+  <div id="modal-root"></div>
+{% endblock %}
+{% block script %}
+  <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

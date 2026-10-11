@@ -1,0 +1,6 @@
+days,times
+month:18,14:00|18:30
+month:19|month:20|month:21|month:22|month:23,10:00|14:00|18:30
+month:24,14:00
+month:25|month:26|month:27|month:28|month:29,10:00|14:00|18:30|21:00
+month:30,10:00|14:00|18:30|21:00|23:59

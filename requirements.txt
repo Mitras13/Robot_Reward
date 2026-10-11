@@ -1,0 +1,10 @@
+jdatetime
+requests
+pandas
+openpyxl
+playwright
+python-dotenv
+flask
+img2pdf
+numpy
+scikit-learn

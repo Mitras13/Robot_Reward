@@ -1,0 +1,67 @@
+# Secrets - never commit. Add every token/credential file here BEFORE it is
+# first created, not after. ** matches at any depth (including zero), so
+# this covers both API_Downloader/tokenHK.txt and API_Downloader/PT/tokenPT.txt.
+API_Downloader/**/token*.txt
+API_Downloader/**/credentials*.txt
+Senders/*token*.txt
+# PEZHVA_USERNAME/PEZHVA_PASSWORD for Senders/send_message_v2.py - see
+# Senders/.env.example. load_dotenv() with no path searches cwd upward, so
+# this lives at the project root (main.py's cwd), not inside Senders/.
+.env
+
+# v2 sender's own state - regenerated at runtime, never shared via git (same
+# reasoning as logs/ below: real contact names/ids, machine-local).
+# (its former Senders/batch_logs/ log+resume dir was removed 1405/06/25 -
+# both senders now log through core/runlog.py, under logs/runs/, already
+# covered by the "logs/" entry below)
+Senders/contacts_cache.json
+
+# Local scratch file written by login_smart_panel.py - not needed after login.
+API_Downloader/_captcha_preview.jpg
+
+# Runtime data - regenerated on each machine, never shared via git.
+# logs/ holds the outbox ledger, which is real delivery history containing
+# recipient names and destinations. It is machine-local by design.
+logs/
+raw_data/
+outputs/
+main.pid
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor / OS
+.vscode/
+Thumbs.db
+*.bak
+
+# Session-local agent state
+.claude/active-task.json
+
+# Knowledge-graph output
+graphify-out/
+
+# Reward input/working data - real employee/customer data, machine-local
+# (user 2026-10-05: push reward code to GitHub, never the data files).
+Rewards/**/*.xlsx
+Rewards/**/reference_fcp_*.csv
+Rewards/**/roster_*.csv
+Rewards/**/ml_lab_*.csv
+Rewards/**/broadcasts.json
+Senders/contacts_cache.json.bak*
+debug.log
+.claude/settings.local.json
+Rewards/**/assets/template_source.jpg
+
+# Ad-hoc reward workbooks dropped at the project root (real employee data,
+# same reasoning as Rewards/**/*.xlsx above).
+/*.xlsx
+# panel_user_id -> messenger username directory (real employee identities,
+# machine-local like contacts_cache.json). Missing file = name search.
+config/chat_directory.csv
+# Sample/preview report images and PDFs - contain real employee names and
+# sales figures (user 1405/07/19: never push).
+sample_reports/
+# Frozen broadcast recipient lists (real employee names, like roster_*.csv)
+Rewards/**/recipients_frozen.json

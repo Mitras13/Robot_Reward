@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(route print)",
+      "Bash(tasklist *)",
+      "Bash(git check-ignore *)",
+      "Bash(graphify query *)",
+      "Bash(ipconfig)",
+      "Bash(net session)"
+    ]
+  }
+}

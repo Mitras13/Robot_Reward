@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} - پیام انبوه{% endblock %}
+{% block content %}
+  <div class="meta">
+    فقط نمایشی است - فعلاً ارسال از همین صفحه انجام نمی‌شود (تا وقتی لیست
+    مخاطبین به‌صورت API در دسترس باشد). هر پیام انبوه فعلاً با اسکریپت
+    دستی، از روی لیستی که کاربر می‌دهد، فرستاده می‌شود.
+  </div>
+
+  <div class="grid">
+    {% for section in sections %}
+    <div class="card wide">
+      <h2>{{ section.label }}</h2>
+
+      {% if not section.history %}
+        <div class="empty">هنوز پیام انبوهی برای این پاداش ثبت نشده.</div>
+      {% else %}
+        {% for item in section.history %}
+        <div class="reward-block">
+          <div class="row">
+            <div class="name">{{ item.sent_at }}</div>
+            <div class="tag">{{ item.recipient_count }} گیرنده</div>
+            <div class="tag success-good">{{ item.ok_count }} موفق</div>
+            {% if item.fail_count %}
+              <div class="tag success-bad">{{ item.fail_count }} ناموفق</div>
+            {% endif %}
+          </div>
+          <div class="reward-current" style="white-space:pre-wrap">{{ item.text }}</div>
+          {% if item.source %}
+            <div class="chip-row"><span class="chip">منبع لیست: {{ item.source }}</span></div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

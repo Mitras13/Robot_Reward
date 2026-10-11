@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robot Reward{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script>
+  (function () {
+    var saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") {
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  })();
+</script>
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="topbar">
+    <h1>Robot Reward</h1>
+    <button class="theme-toggle" id="theme-toggle" type="button" title="تغییر تم روشن/تاریک">
+      <span id="theme-toggle-icon">🌙</span><span id="theme-toggle-label">تاریک</span>
+    </button>
+  </div>
+  <div class="nav">
+    {% for href, label in nav_items %}
+      <a href="{{ href }}" class="{{ 'active' if href == active else '' }}">{{ label }}</a>
+    {% endfor %}
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById("theme-toggle");
+      var icon = document.getElementById("theme-toggle-icon");
+      var label = document.getElementById("theme-toggle-label");
+
+      function current() {
+        return root.getAttribute("data-theme") === "light" ? "light" : "dark";
+      }
+      function sync() {
+        var t = current();
+        icon.textContent = t === "light" ? "☀️" : "🌙";
+        label.textContent = t === "light" ? "روشن" : "تاریک";
+      }
+      btn.addEventListener("click", function () {
+        var next = current() === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        sync();
+      });
+      sync();
+    })();
+  </script>
+
+  {% block script %}{% endblock %}
+</body>
+</html>

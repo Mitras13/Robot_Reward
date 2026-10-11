@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} - وضعیت زنده{% endblock %}
+{% block content %}
+  <div class="card meta-card">
+    <div class="meta" id="meta" style="margin:0">در حال بارگذاری...</div>
+    <div class="running-badge idle" id="running-badge" title="">
+      <span class="running-pulse"></span>
+      <span id="running-count">۰</span>
+      <span>پاداش در جریان</span>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2 id="rewards-title">پاداش‌ها</h2>
+      <div id="rewards" class="scroll-area"></div>
+    </div>
+
+    <div class="dashboard-aside">
+      <div class="card">
+        <h2 id="downloads-title">دانلودها</h2>
+        <div id="downloads"></div>
+      </div>
+
+      <div class="card">
+        <h2 id="tokens-title">سلامت توکن‌ها</h2>
+        <div id="tokens"></div>
+      </div>
+
+      <div class="card log-card">
+        <h2><span>لاگ‌های اخیر</span><span class="tag" id="log-count"></span></h2>
+        <div class="log-toolbar">
+          <input type="text" id="log-search" class="log-search" placeholder="جست‌وجوی نام مخاطب...">
+          <button type="button" id="log-filter-ok" class="icon-btn" title="فقط موفق‌ها">✅</button>
+          <button type="button" id="log-filter-fail" class="icon-btn" title="فقط ناموفق‌ها">❌</button>
+        </div>
+        <div id="recent-log" class="scroll-area"></div>
+      </div>
+
+      <div class="card">
+        <h2>آخرین خطا</h2>
+        <div id="error" class="ok">چیزی از زمان شروع رخ نداده</div>
+      </div>
+
+      <div class="card">
+        <h2>پیام انبوه <a href="/broadcasts" class="tag" style="text-decoration:none">همه ←</a></h2>
+        <div id="broadcasts"></div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script src="{{ url_for('static', filename='js/status.js') }}"></script>
+{% endblock %}
